@@ -1,0 +1,431 @@
+:root {
+  --bg: #f5f8f7;
+  --surf: #fff;
+  --ink: #14213d;
+  --mute: #5b667a;
+  --line: #dde3e8;
+  --head: #14213d;
+  --onhead: #fff;
+  --acc: #f5b700;
+  --onacc: #14213d;
+  --ok: #0e7c5a;
+  --okbg: #e2f4ec;
+  --bad: #b42318;
+  --badbg: #fde8e6;
+  --warn: #7a4e00;
+  --warnbg: #fff0c2;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1322;
+    --surf: #172036;
+    --ink: #edf1f7;
+    --mute: #9aa6bc;
+    --line: #2a3552;
+    --head: #0a0f1c;
+    --ok: #4ed1a1;
+    --okbg: #12362b;
+    --bad: #ff8a80;
+    --badbg: #3a1b1b;
+    --warn: #ffd66b;
+    --warnbg: #3b2e0a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1322;
+  --surf: #172036;
+  --ink: #edf1f7;
+  --mute: #9aa6bc;
+  --line: #2a3552;
+  --head: #0a0f1c;
+  --ok: #4ed1a1;
+  --okbg: #12362b;
+  --bad: #ff8a80;
+  --badbg: #3a1b1b;
+  --warn: #ffd66b;
+  --warnbg: #3b2e0a;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 16px/1.5 Figtree, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Bricolage Grotesque', Figtree, sans-serif;
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(30px, 6vw, 46px);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+header {
+  background: var(--head);
+  color: var(--onhead);
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+}
+
+.bar {
+  max-width: 980px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font: 800 22px 'Bricolage Grotesque', sans-serif;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.logo b {
+  color: var(--acc);
+}
+
+nav {
+  display: flex;
+  gap: 4px;
+}
+
+nav button,
+.pill {
+  background: none;
+  border: 0;
+  color: var(--onhead);
+  font: inherit;
+  padding: 7px 12px;
+  border-radius: 99px;
+  cursor: pointer;
+}
+
+nav button.on {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+main {
+  max-width: 980px;
+  margin: auto;
+  padding: 20px 16px 60px;
+}
+
+.card {
+  background: var(--surf);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.g2 {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.g3 {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sp {
+  justify-content: space-between;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--acc);
+  outline-offset: 2px;
+}
+
+.btn {
+  background: var(--acc);
+  color: var(--onacc);
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  font-weight: 600;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.s {
+  background: var(--surf);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.btn.d {
+  background: var(--badbg);
+  color: var(--bad);
+}
+
+.btn.sm {
+  padding: 7px 12px;
+  font-size: 14px;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surf);
+  color: var(--ink);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 12px 0 4px;
+}
+
+.mute {
+  color: var(--mute);
+  font-size: 14px;
+}
+
+.err {
+  color: var(--bad);
+  font-size: 14px;
+  min-height: 20px;
+  margin-top: 6px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.t-Requested {
+  background: var(--warnbg);
+  color: var(--warn);
+}
+
+.t-Confirmed,
+.t-Completed,
+.ver {
+  background: var(--okbg);
+  color: var(--ok);
+}
+
+.t-Cancelled,
+.t-Declined {
+  background: var(--badbg);
+  color: var(--bad);
+}
+
+.cat {
+  text-align: left;
+  background: var(--surf);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  color: var(--ink);
+}
+
+.cat:hover {
+  border-color: var(--acc);
+}
+
+.cat span {
+  font-size: 28px;
+  display: block;
+}
+
+.av {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 800 18px 'Bricolage Grotesque';
+  color: #14213d;
+  flex: none;
+}
+
+.slots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 6px 0 12px;
+}
+
+.slot {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surf);
+  color: var(--ink);
+}
+
+.slot.on {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.slot:disabled {
+  text-decoration: line-through;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.opt {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.opt input {
+  width: auto;
+  margin-top: 4px;
+}
+
+.opt.on {
+  border-color: var(--acc);
+  box-shadow: inset 0 0 0 1px var(--acc);
+}
+
+.sum td {
+  padding: 3px 0;
+}
+
+.sum td:last-child {
+  text-align: right;
+}
+
+.sum tr.tot td {
+  font-weight: 800;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+.hero {
+  background: var(--head);
+  color: var(--onhead);
+  border-radius: 18px;
+  padding: 28px 22px;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 520px;
+  color: #c9d2e3;
+  margin: 10px 0 18px;
+}
+
+.stars button {
+  background: none;
+  border: 0;
+  font-size: 26px;
+  color: var(--line);
+  padding: 0 2px;
+}
+
+.stars button.on {
+  color: var(--acc);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 10px 18px;
+  border-radius: 99px;
+  z-index: 9;
+  max-width: 90%;
+}
+
+.big {
+  font: 800 26px 'Bricolage Grotesque';
+}
+
+.back {
+  background: none;
+  border: 0;
+  color: var(--mute);
+  padding: 0 0 10px;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .toast {
+    animation: up 0.25s;
+  }
+  @keyframes up {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 10px);
+    }
+  }
+} 
